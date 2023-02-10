@@ -1,0 +1,47 @@
+{% extends 'base/base.html' %}
+{% block content %}
+
+<div class="row row-cols-1 row-cols-md-2 g-4 d-flex justify-content-center">
+    <div class="col">
+       <div class="m-4">
+          <div class="card" style="max-width: 500px;">
+        <div class="row g-0">
+
+            {% if pelicula.imagen %}
+  
+            <div class="col-sm-5" style="background: #868e96;">
+                <img src={{pelicula.imagen.url}} class="card-img-top h-100" alt="...">
+            </div>
+            {% else %}
+            <div class="col-sm-5" style="background: #868e96;">
+                <img src="" class="card-img-top h-100" alt="Sin Imagen por Ahora">
+            </div>
+
+            {% endif %}
+  
+        <div class="col-sm-7">
+            <div class="card-body">
+                <h5 class="card-title">{{pelicula.reseña}}</h5>
+                <h5 class="card-title">{{pelicula.puntuacion}}</h5>
+                <p class="card-text" style="text-align:justify">{{pelicula.descripcion}}</p>
+                <h5 class="card-title">{{pelicula.genero}}</h5>
+            </div>
+  
+            <div class="container">
+                <div class="row">
+                <div class="card-body">
+                 <a href="{% url 'core:inicio' %}" class="btn btn-success ">Volver</a>
+                 
+                </div>
+            </div>
+           </div>
+        </div>
+    </div>
+    </div>
+  </div>
+  </div>
+  </div>
+
+
+{% endblock %}
+

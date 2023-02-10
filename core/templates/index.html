@@ -1,0 +1,69 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+
+<h1 style="text-align: center;">Clasicos en NetFlix - Reseña de Movies</h1>
+
+<div class="m-4">
+
+ <div class="container">
+    <div class="row  height d-flex justify-content-center align-items-center">
+      <div class="col-md-5">
+        <form method="GET" action="{% url 'core:search' %}">
+          <i class="fa fa-search"></i>
+          <input type="text" name="q" class="form-control form-input" placeholder="Ingrese la Palabra Clave" >
+          <span class="left-pan"><i class="fa fa-microphone"></i></span>
+      </div>
+      </form>
+    </div>
+
+ </div> 
+
+<div class="row row-cols-1 row-cols-md-2 g-4">
+  {% for item in peliculas %}
+  <div class="col">
+     <div class="m-4">
+        <div class="card" style="max-width: 500px;">
+      <div class="row g-0">
+
+        {% if item.imagen %}
+
+          <div class="col-sm-5" style="background: #868e96;">
+            <a href="{% url 'core:detail' item.id %}" >
+              <img src={{item.imagen.url}} class="card-img-top h-100" alt="...">
+            </a> 
+          </div>
+        {% else %}
+        <div class="col-sm-5" style="background: #868e96;">
+          <a href="{% url 'core:detail' item.id %}" >
+            <img src="" class="card-img-top h-100" alt="Sin Imagen por Ahora">
+          </a> 
+        </div>
+        {% endif %}
+
+      <div class="col-sm-7">
+          <div class="card-body">
+              <h5 class="card-title">{{item.reseña}}</h5>
+              <p>{{item.director}}</p>
+              <p class="card-text" style="text-align:justify">{{item.descripcion}}</p>
+          </div>
+
+          <div class="container">
+              <div class="row">
+              <div class="card-body">
+               <a href="{% url 'core:update' item.id  %}" class="btn btn-success ">Actualizar</a>
+               <a href="{% url 'core:delete' item.id %}" class="btn btn-danger">Eliminar</a>
+              </div>
+          </div>
+         </div>
+      </div>
+  </div>
+  </div>
+</div>
+</div>
+{% endfor %}
+</div>
+
+
+
+{% endblock %}

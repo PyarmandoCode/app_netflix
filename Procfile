@@ -1,0 +1,1 @@
+web: gunicorn project_netflix.wsgi --log file -

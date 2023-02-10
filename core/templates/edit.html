@@ -1,0 +1,62 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+
+<div class="container">
+    <h1>Crear Una Nueva Pelicula</h1>
+    <form id="create_form" method="POST">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="reseña">Reseña</label>
+            <input type="text" name="reseña" class="form-control" value ="{{pelicula.reseña}}" required/>
+        </div>
+
+        <div class="form-group">
+            <label for="descripcion">Descripcion</label>
+            <textarea name="descripcion" rows="5" class="form-control">{{pelicula.descripcion}}</textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="sipnosis">Sipnosis</label>
+            <textarea name="sipnosis" rows="5" class="form-control" > {{pelicula.sipnosis}}"</textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="director">Director</label>
+            <input type="text" name="director" class="form-control" value ="{{pelicula.director}}" required/>
+        </div>
+
+        <div class="form-group">
+            <label for="puntuacion">Puntuacion</label>
+            <input type="text" name="puntuacion" class="form-control" value ="{{pelicula.puntuacion}}" required />
+            <small class="form-text text-muted">Desde 1 to 5 Estrellas</small>
+        </div>
+
+        <div class="form-group">
+            <label for="genero">Genero</label>
+            <select class="form-control form-control-lg"  name="genero"  >
+                <option value="">--Seleccione--</option>
+                {% for item in generos %}
+                    <option value={{item.codgenero}}>{{item.nombre}}</option>
+                   
+                {% endfor %}
+            </select>
+            
+        </div>
+        
+        <div class="row">
+            <div class="col-md-6">
+                <a class="btn btn-secondary" href="">Regresar</a>
+            </div>
+            <div class="col-md-6" style="text-align: right;">
+                <button type="submit" class="btn btn-primary">Grabar</button>
+            </div>
+        <div>
+        </div>
+        </div>
+
+    </form>
+</div>
+
+
+{% endblock %}
