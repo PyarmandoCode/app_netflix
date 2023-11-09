@@ -1,0 +1,9 @@
+1.-Descarga el Proyecto
+2.-Crear una BD en Postgres con el nombre "db_netflix_clon_backup"
+3.-Migrar las Tablas:python manage.py makemigrations core
+   python manage.py  migrate
+4.-Crear el Superusuario:python manage.py createsuperuser
+5.-Ingresar al Admin llenas data
+6.-Pruebas los servicios:
+http://localhost:8000/api/List_All_Movies
+http://localhost:8000/api/List_All_Genere
