@@ -40,7 +40,7 @@ class Person(models.Model):
     firstname = models.CharField(max_length=180)
     aliases = models.CharField(max_length=80, blank=True, null=True)
     typeperson = models.ForeignKey(TypePerson, on_delete=models.CASCADE, related_name='person')
-    photo = models.ImageField(upload_to='person', blank=True, null=True)
+    photo = models.CharField(max_length=180, blank=True, null=True)
     state = models.BooleanField(default=True)
     created_at = models.DateTimeField('created_at', auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
@@ -63,7 +63,7 @@ class Movie(models.Model):
     lenguage = models.CharField(max_length=20)
   
     genre = models.ForeignKey(Genre, on_delete=models.CASCADE, blank=True, null=True)
-    top = models.ImageField(upload_to='movies', blank=True, null=True)
+    top = models.CharField(max_length=180, blank=True, null=True)
 
     Actor_Actress = models.ManyToManyField(Person, related_name='actor_actress')
     Director = models.ManyToManyField(Person, related_name='director')
